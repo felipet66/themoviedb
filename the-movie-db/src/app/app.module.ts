@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeadComponent } from './head/head.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { MoviesService } from './movies.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ MoviesService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
