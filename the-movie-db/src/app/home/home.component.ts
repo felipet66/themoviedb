@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../movies.service';
+import { Component, OnInit } from '@angular/core'
+import { MoviesService } from '../movies.service'
+import { Movies } from '../model/movies.model'
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,17 @@ import { MoviesService } from '../movies.service';
   providers: [ MoviesService ]
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  public movies: Movies[]
+  constructor( private moviesService: MoviesService) { }
 
   ngOnInit() {
+    this.onSubscribe()
+  }
+
+  onSubscribe(){
+    this.moviesService.getMoviesAll().subscribe(result => {
+      console.log( result )
+    })
   }
 
 }
