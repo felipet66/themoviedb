@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 pt-4 pb-4">
+    <div *ngFor="let movie of movies" class="col-md-3 p-4">
       <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="..." alt="Card image cap">
+          <img class="card-img-top" [src]="getUrlMovie(movie.poster_path)" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Nome do filme</h5>
-            <p class="card-text">Descrição do filme</p>
-            <a href="#" class="btn btn-primary">Detalhes</a>
+            <h5 class="card-title">{{ movie.title }} {{movie.release_date | date }}</h5>
+            <p class="card-text" *ngIf="movie.overview">{{ movie.overview }}</p>
+            <p class="card-text" *ngIf="!movie.overview">Sem descrição</p>
+            <a href="#" class="btn btn-secondary">Detalhes</a>
           </div>
         </div>
     </div>

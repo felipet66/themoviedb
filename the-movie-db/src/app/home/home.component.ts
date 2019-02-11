@@ -10,6 +10,7 @@ import { Movies } from '../model/movies.model'
 })
 export class HomeComponent implements OnInit {
   public movies: Movies[]
+  public urlmovie: string
   constructor( private moviesService: MoviesService) { }
 
   ngOnInit() {
@@ -19,7 +20,12 @@ export class HomeComponent implements OnInit {
   onSubscribe(){
     this.moviesService.getMoviesAll().subscribe(result => {
       console.log( result )
+      this.movies = result.results
     })
+  }
+
+  public getUrlMovie(url: string){
+    return 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + url
   }
 
 }
